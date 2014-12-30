@@ -1,6 +1,8 @@
+// **** DELAYED - Thinking time ****
+
 // The prime factors of 13195 are 5, 7, 13 and 29.
 // What is the largest prime factor of the number 600851475143 ?
-  #include <iostream>
+#include <iostream>
 #include <cmath>
 #include <cstdint>
 
@@ -40,53 +42,53 @@ string base_convert(unsigned long v, long base)
 class Cflags
 {
 public:
-  Cflags(uint64_t a_reserve = 0) : m_flags(0), m_current_size(0), m_buffer_size(0)
+  Cflags(uint64_t a_reserve = 0):m_flags(0)
   {
+    reset();
     m_current_size = 0;
-    resize(a_reserve/8);
+    resize(a_reserve);
   }
 
   virtual ~Cflags()
   {
-    delete [] m_flags;
+    reset();
   }
 
-  bool set(uint64_t idx)
+  void unset(uint64_t idx)
+  {
+    set(idx,false);
+  }
+
+  void set(uint64_t idx , bool set_flag=true)
   {
     if( idx > m_current_size )
     {
       throw "Index out of range";
     }
 
-    uint64_t short_idx = (floor(((float)idx / 8)));
+    uint64_t short_idx = get_short_idx(idx);
 
-    cout << "A:" << idx
-          << " B:" <<  short_idx
-          << " C:" <<  (0xFF - idx % 8)
-          << endl;
+    // cout << "A:" << idx
+    //       << " B:" << short_idx
+    //       << " C:" << base_convert(get_mask(idx-(short_idx*8)),2)
+    //       << endl;
 
-    // 00000000 00000000 00000000
+    if( set_flag )
+    {
+      m_flags[short_idx] =  m_flags[short_idx] | get_mask(idx-(short_idx*8));
+    }
+    else
+    {
+      m_flags[short_idx] =  m_flags[short_idx] ^ get_mask(idx-(short_idx*8));
+    }
 
-    // 1000000  0
-    // 0100000  1
-    // 0010000  2
-
-
-    BYTE x = m_flags[short_idx];// && (idx%8);
-
-    cout << "F: " <<  base_convert(x,2) << endl;// && (idx%8);
-    x = x | (idx%8);
-    cout << "F2: " <<  base_convert(x,2)<< endl;// && (idx%8);
-
-    m_flags[short_idx] = m_flags[short_idx] | (idx%8);
-
-    return x;
+    return;
   }
 
   bool get(uint64_t idx)
   {
-    uint64_t short_idx = (floor(((float)idx / 8)));
-    return m_flags[short_idx] && (idx%8);
+    uint64_t short_idx = get_short_idx(idx);
+    return m_flags[short_idx] & get_mask(idx-(short_idx*8));
   }
 
   uint64_t size()
@@ -102,6 +104,40 @@ public:
 protected:
 private:
 
+  void reset()
+  {
+    delete [] m_flags;
+    m_current_size = 0;
+    m_buffer_size = 0;
+  }
+
+  uint64_t get_short_idx( uint64_t idx )
+  {
+    return (floor(((float)idx / 8)));
+  }
+
+  BYTE get_mask(BYTE byte_index)
+  {
+    // 10000000 0 128
+    // 01000000 1  64
+    // 00100000 2  32
+    // 00010000 3  16
+    // 00001000 4   8
+    // 00000100 5   4
+    // 00000010 6   2
+    // 00000001 7   1
+    static const BYTE lookup[] =
+    {
+        128,64,32,16,8,4,2,1
+    };
+
+    if( byte_index > 7){
+      throw "Byte index out of range";
+    }
+
+    return lookup[byte_index];
+  }
+
   uint64_t m_current_size;  // In Bytes
   uint64_t m_buffer_size;
 
@@ -111,12 +147,17 @@ private:
               uint64_t new_size // < In flags
                 )
   {
+    cout << "Resizing: "
+          << new_size
+          << " R:"
+          << ceil((float)(new_size/8)/ARRAY_INCREMENT)* ARRAY_INCREMENT
+          << endl;
     if( 0 == m_flags ||
         new_size != m_current_size )
     {
       if( new_size > m_current_size )
       {
-        uint64_t real_size = ceil((float)(new_size*8)/ARRAY_INCREMENT)* ARRAY_INCREMENT;
+        uint64_t real_size = ceil((float)(new_size/8)/ARRAY_INCREMENT)* ARRAY_INCREMENT;
         BYTE* new_array = new BYTE(real_size);
         if( 0 != m_flags )
         {
@@ -156,16 +197,47 @@ int main( int argc , char* argv[]  )
 
     class Cflags* flags = new Cflags(600851475143);
 
-    // flags->set(4);
-    // flags->set(14);
-    // flags->set(15);
-    flags->set(16);
-
-
-    // cout << flags->get(4) << endl;
-    // cout << flags->get(14) << endl;
-    // cout << flags->get(15) << endl;
+    cout << flags->get(4) << endl;
+    cout << flags->get(14) << endl;
+    cout << flags->get(15) << endl;
     cout << flags->get(16) << endl;
+    cout << flags->get(162222222) << endl;
+
+    flags->set(4);
+    flags->set(14);
+    flags->set(15);
+    flags->set(16);
+    cout << flags->get(162222222) << endl;
+
+    cout << flags->get(4) << endl;
+    cout << flags->get(14) << endl;
+    cout << flags->get(15) << endl;
+    cout << flags->get(16) << endl;
+    cout << flags->get(162222222) << endl;
+
+    flags->unset(4);
+    flags->unset(14);
+    flags->unset(15);
+    flags->unset(16);
+    cout << flags->get(162222222) << endl;
+
+    cout << flags->get(4) << endl;
+    cout << flags->get(14) << endl;
+    cout << flags->get(15) << endl;
+    cout << flags->get(16) << endl;
+    cout << flags->get(162222222) << endl;
+
+    flags->unset(4);
+    flags->unset(14);
+    flags->unset(15);
+    flags->unset(16);
+    cout << flags->get(162222222) << endl;
+
+    cout << flags->get(4) << endl;
+    cout << flags->get(14) << endl;
+    cout << flags->get(15) << endl;
+    cout << flags->get(16) << endl;
+    cout << flags->get(162222222) << endl;
 
     bool check = flags->get(1000);
 
@@ -179,7 +251,5 @@ int main( int argc , char* argv[]  )
       << e
       << endl;
   }
-
-
 
 }

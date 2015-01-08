@@ -1,3 +1,5 @@
+// https://projecteuler.net/problem=4
+
 // Stop resisting and let atom format
 
 // A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
@@ -42,5 +44,4 @@ uint64_t brute_force()
 int main( int argc , char* argv[] )
 {
   cout << brute_force() << endl;
-
 }

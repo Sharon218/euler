@@ -12,6 +12,8 @@
 
 #include <cmath>
 
+#include "sieve_eratos.h"
+
 using namespace std;
 
 // Input: an integer n > 1
@@ -27,85 +29,6 @@ using namespace std;
 // Output: all i such that A[i] is true.
 
 // @see http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-class CSieveOfEratosthenes
-{
-public:
-  CSieveOfEratosthenes(int a_upper = 0) : m_upper(a_upper), m_primes(nullptr)
-  {
-    init();
-  }
-
-  virtual ~CSieveOfEratosthenes()
-  {
-
-  }
-
-  int get_nth(int a_pos)
-  {
-    int value = 0;
-    int count = a_pos;
-    size_t i = 0;
-    for ( i = 0; i < m_primes->size() && a_pos ; i++) {
-      // cout << "O: " << i << endl;
-      if( true == (*m_primes)[i] ){
-        // cout << "    **" << endl;
-        value = i;
-        a_pos--;
-      }
-    }
-
-    if( a_pos == 0 ){
-      return value;
-    }else{
-      return 0;
-    }
-  }
-
-  void dump(void)
-  {
-    cout << "Sieve dump" << endl;
-    cout << "Upper: " << m_upper << endl;
-
-    for (size_t i = 0; i < m_primes->size() ; i++) {
-      if( true == (*m_primes)[i] ){
-        cout << i << ',';
-      }
-    }
-    cout << endl;
-  }
-
-protected:
-  void init()
-  {
-    delete [] m_primes;
-
-    if( m_upper <= 0 )
-    {
-      return;
-    }
-
-    int sqrtupper = (int)floor(sqrt(m_upper));
-
-    m_primes = new vector<bool>(m_upper,true);
-
-    (*m_primes)[0] = false;
-    (*m_primes)[1] = false;
-
-    for (size_t i = 2; i <= sqrtupper ; i++ ) {
-      // cout << "O:" << i << endl;
-      if( true == (*m_primes)[i]){
-        for (size_t j = (i*i); j < m_upper; j += i ) {
-          // cout << "    I:" << j << endl;
-          (*m_primes)[j] = false;
-        }
-      }
-    }
-  }
-
-private:
-  int m_upper;
-  vector<bool>*  m_primes;
-};
 
 int main( int argc , char* argv[])
 {

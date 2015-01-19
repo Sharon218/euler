@@ -22,7 +22,6 @@ bool palindrome_test(uint64_t test_me)
   }
 
   return (test_me == reversed);
-
 }
 
 uint64_t brute_force()

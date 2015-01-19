@@ -35,14 +35,16 @@ int brute_force()
   return 0;
 }
 
+const static int g_n = 1000;
+
 int opt_one()
 {
   // Take advantage of the actual maximum range
   // i.e. a can only have a maximum value of n/3 to
   // satisfy a < b < c && (a+b+c)==n
-  for(int a = (1000/3); --a; ){
-    for(int b = (1000/2); --b; ){
-      int c = 1000 - b - a;
+  for(int a = (g_n/3); --a; ){
+    for(int b = (g_n/2); --b; ){
+      int c = g_n - b - a;
       if( (a*a)+(b*b) == (c*c) ){
         cout << "a:" << a << " b:" << b << " c:" << c << endl;
         return a*b*c;

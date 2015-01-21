@@ -11,14 +11,16 @@ all: $(BIN)/euler001 \
 			$(BIN)/euler008 \
 			$(BIN)/euler009 \
 			$(BIN)/euler010 \
-			$(BIN)/int001
+			$(BIN)/int001 \
+			$(BIN)/loop_test \
+			$(BIN)/scratch \
 
 
 $(BIN)/%:  $(SRC)/%.cpp
-			$(CXX) $< $(CFLAGS) -o $@
+			$(CXX) -std=c++11 -O1 $< $(CFLAGS) -o $@
 
 $(BIN)/euler007: $(SRC)/euler007.o $(SRC)/sieve_eratos.o
-			$(CXX) -o $@ $^ $(CFLAGS)
+			$(CXX) -std=c++11 -O1 -o $@ $^ $(CFLAGS)
 
 $(BIN)/euler010: $(SRC)/euler010.o $(SRC)/sieve_eratos.o
-			$(CXX) -o $@ $^ $(CFLAGS)
+			$(CXX) -std=c++11 -O1 -o $@ $^ $(CFLAGS)

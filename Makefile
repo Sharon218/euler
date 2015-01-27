@@ -14,6 +14,8 @@ all: $(BIN)/euler001 \
 			$(BIN)/int001 \
 			$(BIN)/loop_test \
 			$(BIN)/scratch \
+			$(BIN)/int002 \
+
 
 
 $(BIN)/%:  $(SRC)/%.cpp

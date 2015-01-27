@@ -1,4 +1,3 @@
-// Header only implementation
 #include "sieve_eratos.h"
 
 #include <iostream>

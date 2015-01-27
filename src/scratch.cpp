@@ -81,13 +81,13 @@
 // }
 
 
-#include <iostream>
-#include <limits>
-
-int main() {
-  int i = std::numeric_limits<int>::max();
-  std::cout << ++i;  // Actually undefined behavior
-}
+// #include <iostream>
+// #include <limits>
+//
+// int main() {
+//   int i = std::numeric_limits<int>::max();
+//   std::cout << ++i;  // Actually undefined behavior
+// }
 
 
 // #include <iostream>
@@ -102,3 +102,25 @@ int main() {
 //   *a = 1;
 //   //X x();
 // }
+
+
+#include <functional>
+#include <iostream>
+
+template <typename T>
+struct identity
+{
+  typedef T type;
+};
+
+template <typename T>
+void call_with(typename identity<std::function<void(T)> >::type f, T val)
+{
+  f(val);
+}
+
+int main()
+{
+  auto print = [] (int x) { std::cout << x; };
+  call_with(print, 42);
+}

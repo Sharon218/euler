@@ -1,5 +1,7 @@
 BIN=./bin
 SRC=./src
+LIB=$(SRC)/sieve_eratos.o
+CFLAGS=-O1
 
 all: $(BIN)/euler001 \
 			$(BIN)/euler002 \
@@ -15,14 +17,15 @@ all: $(BIN)/euler001 \
 			$(BIN)/loop_test \
 			$(BIN)/scratch \
 			$(BIN)/int002 \
+			$(BIN)/unittest \
 
 
 
-$(BIN)/%:  $(SRC)/%.cpp
-			$(CXX) -std=c++11 -O1 $< $(CFLAGS) -o $@
+$(BIN)/%:  $(SRC)/%.cpp $(LIB)
+			$(CXX) -ggdb -std=c++11 $< $(CFLAGS) -o $@ $(LIB)
 
-$(BIN)/euler007: $(SRC)/euler007.o $(SRC)/sieve_eratos.o
-			$(CXX) -std=c++11 -O1 -o $@ $^ $(CFLAGS)
-
-$(BIN)/euler010: $(SRC)/euler010.o $(SRC)/sieve_eratos.o
-			$(CXX) -std=c++11 -O1 -o $@ $^ $(CFLAGS)
+# $(BIN)/euler007: $(SRC)/euler007.o $(SRC)/sieve_eratos.o
+# 			$(CXX) -ggdb -std=c++11 -O1 -o $@ $^ $(CFLAGS)
+#
+# $(BIN)/euler010: $(SRC)/euler010.o $(SRC)/sieve_eratos.o
+# 			$(CXX) -ggdb -std=c++11 -O1 -o $@ $^ $(CFLAGS)

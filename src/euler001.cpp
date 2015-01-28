@@ -7,12 +7,10 @@
 
 #include <iostream>
 
-using namespace std;
-
-int main(int argc, char* argv[])
+unsigned int sum_natural_35(size_t upper)
 {
-  int sum(0);
-  for( int i = 1000 ; --i; )
+  unsigned int sum(0);
+  for( int i = upper ; --i; )
   {
     if( 0 == i % 3 )
     {
@@ -23,6 +21,12 @@ int main(int argc, char* argv[])
       sum += i;
     }
   }
-
-  cout << sum << endl;
+  return sum;
 }
+
+#if ! defined UNITTEST_MODE
+int main(int argc, char* argv[])
+{
+  std::cout << sum_natural_35(1000) << std::endl;
+}
+#endif // UNITTEST_MODE

@@ -23,4 +23,8 @@ TEST_F(TestSieveEratos,KnownResult){
   EXPECT_EQ(17,m_sieve->sum(10));
 }
 
+TEST_F(TestSieveEratos,KnownResult2){
+  EXPECT_EQ(17,m_sieve->sum(10));
+}
+
 };

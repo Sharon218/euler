@@ -1,12 +1,15 @@
+.PHONY: clean
+
 BIN=./bin
 SRC=./src
 LLIB=$(SRC)/sieve_eratos.o
 LIB=-lpthread /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a
-CXXFLAGS=-O1 -ggdb -std=c++11
+CXXFLAGS=-O1 -std=c++11
 
-TESTO=$(SRC)\unittest.o $(SRC)\test_sieve.o
+TESTO=$(SRC)\unittest.o $(SRC)\test_sieve.o $(SRC)\euler001.o
+TESTHDRS=$(SRC)\test_sieve_eratos.h
 
-all: $(BIN)/euler001 \
+BINARIES=$(BIN)/euler001 \
 			$(BIN)/euler002 \
 			$(BIN)/euler003 \
 			$(BIN)/euler004 \
@@ -22,8 +25,15 @@ all: $(BIN)/euler001 \
 			$(BIN)/int002 \
 			$(BIN)/unittest
 
+all: $(BINARIES)
+
+clean:
+	rm -f $(BINARIES)
+
 $(BIN)/%:  $(SRC)/%.o $(LLIB)
 	$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)
 
-$(BIN)/unittest.o: $(BIN)/unittest.cpp
+$(BIN)/unittest.o: $(SRC)/unittest.cpp \
+	$(SRC)/test_sieve_eratos.h \
+	$(SRC)/test_prob_001.h \
 	$(CXX) $(CXXFLAGS) $< -o $@

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <gtest/gtest.h>
 
-#include "sieve_eratos.h"
+#include "test_sieve_eratos.h"
 
 int main(int argc, char* argv[] )
 {

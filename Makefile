@@ -23,7 +23,7 @@ all: $(BIN)/euler001 \
 			$(BIN)/unittest
 
 $(BIN)/%:  $(SRC)/%.o $(LLIB)
-	$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB)
+	$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)
 
 $(BIN)/unittest.o: $(BIN)/unittest.cpp
 	$(CXX) $(CXXFLAGS) $< -o $@

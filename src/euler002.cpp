@@ -8,11 +8,13 @@
 // By considering the terms in the Fibonacci sequence whose values do not
 // exceed four million, find the sum of the even-valued terms.
 
+// Answer: 4613732
+
 #include <iostream>
 
 using namespace std;
 
-int main( int argc , char* argv[] )
+int sum_even_fib(size_t upper)
 {
   long fib1 = 1;
   long fib2 = 1;
@@ -29,6 +31,12 @@ int main( int argc , char* argv[] )
     fib2 = fib1;
     fib1 = result;
   }
-
-  cout << summed << endl;
+  return summed;
 }
+
+#if ! defined UNITTEST_MODE
+int main( int argc , char* argv[] )
+{
+  cout << "Answer: " << sum_even_fib(4000000) << endl;
+}
+#endif

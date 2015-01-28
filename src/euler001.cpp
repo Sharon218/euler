@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-unsigned int sum_natural_35(size_t upper)
+int sum_natural_35(size_t upper)
 {
   unsigned int sum(0);
   for( int i = upper ; --i; )

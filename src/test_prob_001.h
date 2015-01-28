@@ -1,4 +1,3 @@
-#define UNITTEST_MODE 1
 #include "euler001.cpp"  // TODO: Split and inline
 
 namespace{
@@ -6,7 +5,7 @@ namespace{
     EXPECT_EQ(23,sum_natural_35(10));
   }
 
-  TEST(Prob001,Know002){
+  TEST(Prob001,Answer){
     EXPECT_EQ(233168,sum_natural_35(1000));
   }
 };

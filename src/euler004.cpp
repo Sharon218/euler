@@ -2,7 +2,8 @@
 
 // Stop resisting and let atom format
 
-// A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+// A palindromic number reads the same both ways.
+// The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
 // Find the largest palindrome made from the product of two 3-digit numbers.
 #include <iostream>
 #include <cstdint>
@@ -24,7 +25,7 @@ bool palindrome_test(uint64_t test_me)
   return (test_me == reversed);
 }
 
-uint64_t brute_force()
+uint64_t prob004_brute_force()
 {
   uint32_t max_pali = 0;
   for( uint32_t i = 999 ; --i > 100 ;){
@@ -40,7 +41,9 @@ uint64_t brute_force()
   return max_pali;
 }
 
+#if ! defined UNITTEST_MODE
 int main( int argc , char* argv[] )
 {
-  cout << brute_force() << endl;
+  cout << prob004_brute_force() << endl;
 }
+#endif // UNITTEST_MODE

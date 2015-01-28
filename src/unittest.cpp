@@ -6,6 +6,8 @@
 #include "test_sieve_eratos.h"
 #include "test_prob_001.h"
 #include "test_prob_002.h"
+#include "test_prob_003.h"
+#include "test_prob_004.h"
 
 int main(int argc, char* argv[] )
 {

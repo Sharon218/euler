@@ -32,10 +32,12 @@ $(SRC)/sieve_eratos.o: $(SRC)/sieve_eratos.cpp $(SRC)/sieve_eratos.h
 $(BIN)/unittest: $(SRC)/unittest.o
 
 $(BIN)/unittest.o: $(SRC)/unittest.cpp \
-										$(SRC)/test_sieve_eratos.h \
-										$(SRC)/test_prob_001.h \
-										$(SRC)/test_prob_002.h
-										$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)
+											$(SRC)/test_sieve_eratos.h \
+											$(SRC)/test_prob_001.h \
+											$(SRC)/test_prob_002.h \
+											$(SRC)/test_prob_003.h \
+											$(SRC)/test_prob_004.h
+											$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)
 
 $(BIN)/%:  $(SRC)/%.o $(LLIB)
 	$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)

@@ -8,15 +8,22 @@
 // Answer: 104743
 
 #include <iostream>
+#include <memory>
+
 #include "sieve_eratos.h"
 
-using namespace std;
+int nth_prime(size_t nth)
+{
+  std::unique_ptr<CSieveOfEratosthenes> sieve(new CSieveOfEratosthenes(110000));
+  if( sieve ){
+    return sieve->get_nth(nth);
+  }
+  return 0;
+}
 
+#if ! defined UNITTEST_MODE
 int main( int argc , char* argv[])
 {
-  CSieveOfEratosthenes* sieve = new CSieveOfEratosthenes(110000);
-  sieve->dump();
-
-  int find_me = 10001;
-  cout << "Nth: " << find_me << '=' << sieve->get_nth(find_me) << endl;
+  std::cout << "Answer: " << nth_prime(10001) << std::endl;
 }
+#endif

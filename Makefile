@@ -39,7 +39,8 @@ $(BIN)/unittest.o: $(SRC)/unittest.cpp \
 											$(SRC)/test_prob_004.h \
 											$(SRC)/test_prob_005.h \
 											$(SRC)/test_prob_006.h \
-											$(SRC)/test_prob_007.h 
+											$(SRC)/test_prob_007.h \
+											$(SRC)/test_prob_008.h 
 											$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)
 
 $(BIN)/%:  $(SRC)/%.o $(LLIB)

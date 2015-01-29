@@ -32,8 +32,6 @@
 #include <iostream>
 #include <cstdint>
 
-using namespace std;
-
 static const int digits[] =
 {
 7,3,1,6,7,1,7,6,5,3,1,3,3,0,6,2,4,9,1,9,2,2,5,1,1,
@@ -78,7 +76,7 @@ static const int digits[] =
 3,6,0,0,8,2,3,2,5,7,5,3,0,4,2,0,7,5,2,9,6,3,4,5,0,-1
 };
 
-template <int len> uint64_t opt_force()
+template <int len> uint64_t largest_product_opt()
 {
   int idx = 0;
   uint64_t answer = 0;
@@ -90,20 +88,20 @@ template <int len> uint64_t opt_force()
       tmp *= digits[idx+i];
     }
 
-    answer = max(tmp,answer);
+    answer = std::max(tmp,answer);
     idx++;
   }
   return answer;
 }
 
-template <> uint64_t opt_force<4>()
+template <> uint64_t largest_product_opt<4>()
 {
   int idx = 0;
   uint64_t answer = 0;
 
   while( -1 != digits[idx+4] )
   {
-    answer = max(((uint64_t)digits[idx] *
+    answer = std::max(((uint64_t)digits[idx] *
                   digits[idx+1] *
                   digits[idx+2] *
                   digits[idx+3]),answer);
@@ -113,14 +111,14 @@ template <> uint64_t opt_force<4>()
   return answer;
 }
 
-template <> uint64_t opt_force<13>()
+template <> uint64_t largest_product_opt<13>()
 {
   int idx = 0;
   uint64_t answer = 0;
 
   while( -1 != digits[idx+13] )
   {
-    answer = max(((uint64_t)digits[idx]
+    answer = std::max(((uint64_t)digits[idx]
                   * digits[idx+1]
                   * digits[idx+2]
                   * digits[idx+3]
@@ -139,7 +137,7 @@ template <> uint64_t opt_force<13>()
   return answer;
 }
 
-uint64_t brute_force(int len)
+uint64_t largest_product_brute(int len)
 {
   int idx = 0;
   uint64_t answer = 0;
@@ -151,35 +149,17 @@ uint64_t brute_force(int len)
       tmp *= digits[idx+i];
     }
 
-    answer = max(tmp,answer);
+    answer = std::max(tmp,answer);
     idx++;
   }
   return answer;
 }
 
-
+#if ! defined UNITTEST_MODE
 int main( int argc , char* argv[] )
 {
-  // for( int i = 10001 ; --i ; )
-  // {
-
-  //   0.427s
-  //   //brute_force(13);
-
-  //   0.167s
-  //   opt_force<13>();
-  // }
-
-  if(5832!=brute_force(4)){
-    cerr << "Fail" << endl;
-    return -1;
-  }
-  cout << "Answer: " << brute_force(13) << endl;
-
-  if(5832!=opt_force<4>()){
-    cerr << "Fail" << endl;
-    return -1;
-  }
-  cout << "Answer: " << opt_force<13>() << endl;
+  std::cout << "Answer: " << largest_product_brute(13) << std::endl;
+  std::cout << "Answer: " << largest_product_opt<13>() << std::endl;
   return 0;
 }
+#endif

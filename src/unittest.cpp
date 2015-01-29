@@ -9,6 +9,7 @@
 #include "test_prob_003.h"
 #include "test_prob_004.h"
 #include "test_prob_005.h"
+#include "test_prob_006.h"
 
 int main(int argc, char* argv[] )
 {

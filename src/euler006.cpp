@@ -16,19 +16,23 @@
 
 #include <iostream>
 
-using namespace std;
-
-
-int main( int argc , char* argv[])
+int sum_squares(size_t size)
 {
-  uint64_t sum_square = 0;
-  uint64_t square_sum = 0;
+  int sum_square = 0;
+  int square_sum = 0;
 
-  for(size_t i = 101; --i ;)
+  for(size_t i = (size+1); --i ;)
   {
     sum_square += (i*i);
     square_sum += i;
   }
 
-  cout << (square_sum*square_sum) - sum_square << endl;
+  return ((square_sum*square_sum) - sum_square);
 }
+
+#if ! defined UNITTEST_MODE
+int main( int argc , char* argv[])
+{
+  std::cout << "Answer: " << sum_squares(100) << std::endl;
+}
+#endif

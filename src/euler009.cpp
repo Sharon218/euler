@@ -20,7 +20,7 @@
 
 using namespace std;
 
-int brute_force()
+int special_pyg_brute()
 {
   // Unintuative ranges
   for(int a = 500; --a; ){
@@ -37,7 +37,7 @@ int brute_force()
 
 const static int g_n = 1000;
 
-int opt_one()
+int special_pyg_opt()
 {
   // Take advantage of the actual maximum range
   // i.e. a can only have a maximum value of n/3 to
@@ -54,25 +54,10 @@ int opt_one()
   return 0;
 }
 
+#if ! defined UNITTEST_MODE
 int main( int argc, char* argv[] )
 {
-  // if(31875000 != brute_force())
-  // {
-  //     cerr << "Fail" << endl;
-  // }
-  //
-  // if(31875000 != opt_one())
-  // {
-  //   cerr << "Fail" << endl;
-  // }
-
-  for( int i = 10000; --i ;){
-    // 5.139s
-    brute_force();
-    // 2.233s
-    //opt_one();
-    // TODO: Research number theory regarding Pythagorean triplets
-  }
-
-  //cout << "Answer: " << brute_force() << endl;
+  std::cout << "Answer: " << special_pyg_brute() << std::endl;
+  std::cout << "Answer: " << special_pyg_opt() << std::endl;
 }
+#endif

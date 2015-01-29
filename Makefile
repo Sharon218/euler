@@ -29,19 +29,24 @@ clean:
 
 $(SRC)/sieve_eratos.o: $(SRC)/sieve_eratos.cpp $(SRC)/sieve_eratos.h
 
-$(BIN)/unittest: $(SRC)/unittest.o
+$(SRC)/euler007.o: $(SRC)/euler007.cpp $(SRC)/sieve_eratos.h
 
-$(BIN)/unittest.o: $(SRC)/unittest.cpp \
-											$(SRC)/test_sieve_eratos.h \
-											$(SRC)/test_prob_001.h \
-											$(SRC)/test_prob_002.h \
-											$(SRC)/test_prob_003.h \
-											$(SRC)/test_prob_004.h \
-											$(SRC)/test_prob_005.h \
-											$(SRC)/test_prob_006.h \
-											$(SRC)/test_prob_007.h \
-											$(SRC)/test_prob_008.h
-											$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)
+$(SRC)/euler010.o: $(SRC)/euler010.cpp $(SRC)/sieve_eratos.h
 
-$(BIN)/%:  $(SRC)/%.o $(LLIB)
-	$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)
+$(BIN)/euler007: $(SRC)/euler007.o $(SRC)/sieve_eratos.o
+	$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB)
+
+$(BIN)/euler010: $(SRC)/euler010.o $(SRC)/sieve_eratos.o
+	$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB)
+
+TESTINC := $(wildcard $(SRC)/test_prob*.h)
+SOLUSRC := $(wildcard $(SRC)/euler*.cpp)
+$(SRC)/unittest.o: $(SRC)/unittest.cpp $(TESTINC) $(SOLUSRC) $(SRC)/sieve_eratos.h
+
+$(BIN)/unittest: $(SRC)/unittest.o $(SRC)/sieve_eratos.o
+		$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)
+
+#include "sieve_eratos.h"
+
+$(BIN)/%:  $(SRC)/%.o
+	$(CXX) $(CXXFLAGS) $< -o $@

@@ -4,7 +4,7 @@ BIN=./bin
 SRC=./src
 LLIB=$(SRC)/sieve_eratos.o
 LIB=-lpthread /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a
-CXXFLAGS=-O1 -std=c++11
+CXXFLAGS=-O0 -std=c++11
 
 BINARIES=$(BIN)/euler001 \
 			$(BIN)/euler002 \
@@ -40,7 +40,7 @@ $(BIN)/unittest.o: $(SRC)/unittest.cpp \
 											$(SRC)/test_prob_005.h \
 											$(SRC)/test_prob_006.h \
 											$(SRC)/test_prob_007.h \
-											$(SRC)/test_prob_008.h 
+											$(SRC)/test_prob_008.h
 											$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB) $(LIB)
 
 $(BIN)/%:  $(SRC)/%.o $(LLIB)

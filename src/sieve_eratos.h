@@ -12,6 +12,11 @@ public:
     init();
   }
 
+  virtual ~CSieveOfEratosthenes()
+  {
+    delete m_primes;
+  }
+
   int get_nth(int a_pos)
   {
     int value = 0;
@@ -50,7 +55,7 @@ public:
 protected:
   void init()
   {
-    delete [] m_primes;
+    delete m_primes;
 
     if( m_upper <= 0 ){
       return;

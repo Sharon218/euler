@@ -33,9 +33,9 @@ public:
     }
   }
 
-  int sum(int a_max)
+  uint64_t sum(int a_max)
   {
-    int total = 0;
+    uint64_t total = 0;
     size_t i;
     for( i = 0; i < a_max ; i++){
       if( true == (*m_primes)[i]){

@@ -39,7 +39,7 @@ $(BIN)/euler007: $(SRC)/euler007.o $(SRC)/sieve_eratos.o
 $(BIN)/euler010: $(SRC)/euler010.o $(SRC)/sieve_eratos.o
 	$(CXX) $(CXXFLAGS) $< -o $@ $(LLIB)
 
-TESTINC := $(wildcard $(SRC)/test_prob*.h)
+TESTINC := $(wildcard $(SRC)/test_*.h)
 SOLUSRC := $(wildcard $(SRC)/euler*.cpp)
 $(SRC)/unittest.o: $(SRC)/unittest.cpp $(TESTINC) $(SOLUSRC) $(SRC)/sieve_eratos.h
 

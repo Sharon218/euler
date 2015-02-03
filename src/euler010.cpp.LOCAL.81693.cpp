@@ -7,19 +7,20 @@
 // Answer: 142913828922
 
 #include <iostream>
-#include <memory>
 
 #include "sieve_eratos.h"
 
-uint64_t summation_of_primes()
-{
-  CSieveOfEratosthenes cs(2000000);
-  return cs.sum(2000000);
-}
+using namespace std;
 
 #if ! defined UNITTEST_MODE
+
 int main(int argc, char* argv[] )
 {
-  std::cout << "Answer: " << summation_of_primes() << std::endl;
+  CSieveOfEratosthenes* cs = new CSieveOfEratosthenes(20000000);
+  if( 17 != cs->sum(10)){
+    cerr << "Fail" << endl;
+  }
+  cout << "Answer: " << cs->sum(2000000) << endl;
 }
+
 #endif // #if ! defined UNITTEST_MODE

@@ -2,6 +2,6 @@
 
 namespace{
   TEST(Prob010,Answer){
-    EXPECT_EQ(31875000,special_pyg_opt());
+    EXPECT_EQ(142913828922,summation_of_primes());
   }
 };

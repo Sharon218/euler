@@ -18,8 +18,16 @@ uint64_t summation_of_primes()
 }
 
 #if ! defined UNITTEST_MODE
+<<<<<<< HEAD
+
+=======
+>>>>>>> 18d0f4fd85c2f36e62e7c3eecfd088df96e863ab
 int main(int argc, char* argv[] )
 {
   std::cout << "Answer: " << summation_of_primes() << std::endl;
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 18d0f4fd85c2f36e62e7c3eecfd088df96e863ab
 #endif // #if ! defined UNITTEST_MODE

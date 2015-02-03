@@ -12,6 +12,8 @@
 
 using namespace std;
 
+#if ! defined UNITTEST_MODE
+
 int main(int argc, char* argv[] )
 {
   CSieveOfEratosthenes* cs = new CSieveOfEratosthenes(20000000);
@@ -20,3 +22,5 @@ int main(int argc, char* argv[] )
   }
   cout << "Answer: " << cs->sum(2000000) << endl;
 }
+
+#endif // #if ! defined UNITTEST_MODE

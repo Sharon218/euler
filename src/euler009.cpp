@@ -27,7 +27,7 @@ int special_pyg_brute()
     for(int b = 500; --b; ){
       int c = 1000 - b - a;
       if( a < b && (0==(a*a)+(b*b)-(c*c)) ){
-        cout << "a:" << a << " b:" << b << " c:" << c << endl;
+//        cout << "a:" << a << " b:" << b << " c:" << c << endl;
         return a*b*c;
       }
     }
@@ -46,7 +46,7 @@ int special_pyg_opt()
     for(int b = (g_n/2); --b; ){
       int c = g_n - b - a;
       if( (a*a)+(b*b) == (c*c) ){
-        cout << "a:" << a << " b:" << b << " c:" << c << endl;
+//        cout << "a:" << a << " b:" << b << " c:" << c << endl;
         return a*b*c;
       }
     }

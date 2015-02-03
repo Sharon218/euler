@@ -27,7 +27,7 @@
 //
 // What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 
-// Answer: 70600674 
+// Answer: 70600674
 
 #include <iomanip>
 #include <iostream>
@@ -59,27 +59,23 @@ static const int grid[] =
  1,70,54,71,83,51,54,69,16,92,33,48,61,43,52, 1,89,19,67,48
 };
 
-int largest_grid_product_brute()
+uint64_t largest_grid_product_brute()
 {
-  int max = 0;
-  for( size_t i = 0 ; i < 80; i++ ){
+  uint64_t max = 0;
+  for( size_t i = 0 ; i < 400; i++ ){
     int r = std::floor(i/20);
     int c = ((i-(r*20))%20);
 
-    int rl_sum = 0;       // <->
-    int ud_sum = 0;       // <->
-    int f_diag_sum = 0;   //  /
-    int b_diag_sum;       //  \
-
-    std::cout << '[' << std::setw(3) << i << ']' << "----------------" << std::endl;
+    uint64_t rl_sum = 0;       // <->
+    uint64_t ud_sum = 0;       // <->
+    uint64_t f_diag_sum = 0;   //  /
+    uint64_t b_diag_sum = 0;       //  \
 
     if( c < 17 ){
       rl_sum = grid[i] *
                 grid[i+1] *
                 grid[i+2] *
                 grid[i+3];
-
-
 
       max = std::max(rl_sum,max);
 
@@ -109,6 +105,15 @@ int largest_grid_product_brute()
 
         max = std::max(b_diag_sum,max);
       }
+
+      // std::cout << '[' << std::setw(3) << i
+      //             << "](" << r << '/' << c
+      //             << ")rl[" << rl_sum
+      //             << "]ud[" << ud_sum
+      //             << "]fd[" << f_diag_sum
+      //             << "]bd[" << b_diag_sum
+      //             << "]=" << max
+      //             << std::endl;
     }
   }
   return max;

@@ -14,6 +14,7 @@
 #include "test_prob_008.h"
 #include "test_prob_009.h"
 #include "test_prob_010.h"
+#include "test_prob_011.h"
 
 int main(int argc, char* argv[] )
 {

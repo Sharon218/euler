@@ -36,6 +36,6 @@ uint64_t largest_prime_factor(uint64_t number)
 #if ! defined UNITTEST_MODE
 int main(int argc, char const *argv[])
 {
-  std::cout << "Answer: " << largest_prime_factor(13195) << std::endl;
+  std::cout << "Answer: " << largest_prime_factor(600851475143) << std::endl;
 }
 #endif // #if ! defined UNITTEST_MODE

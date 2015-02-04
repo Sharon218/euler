@@ -35,7 +35,7 @@ int sum_even_fib(size_t upper)
 }
 
 #if ! defined UNITTEST_MODE
-int main( int argc , char* argv[] )
+int main(int argc, char const *argv[])
 {
   cout << "Answer: " << sum_even_fib(4000000) << endl;
 }

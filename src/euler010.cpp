@@ -18,7 +18,7 @@ uint64_t summation_of_primes()
 }
 
 #if ! defined UNITTEST_MODE
-int main(int argc, char* argv[] )
+int main(int argc, char const *argv[])
 {
   std::cout << "Answer: " << summation_of_primes() << std::endl;
 }

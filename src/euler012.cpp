@@ -22,6 +22,9 @@ int num_divisors_brute(int a_min_div){
   return 28;
 }
 
-int main(int argc, char const *argv[]) {
+#if ! defined UNITTEST_MODE
+int main(int argc, char const *argv[])
+{
   std::cout << "Answer: " << num_divisors_brute(5) << std::endl;
 }
+#endif // #if ! defined UNITTEST_MODE

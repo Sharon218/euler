@@ -156,7 +156,7 @@ uint64_t largest_product_brute(int len)
 }
 
 #if ! defined UNITTEST_MODE
-int main( int argc , char* argv[] )
+int main(int argc, char const *argv[])
 {
   std::cout << "Answer: " << largest_product_brute(13) << std::endl;
   std::cout << "Answer: " << largest_product_opt<13>() << std::endl;

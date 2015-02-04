@@ -120,7 +120,7 @@ uint64_t largest_grid_product_brute()
 }
 
 #if ! defined UNITTEST_MODE
-int main( int argc, char* argv[] )
+int main(int argc, char const *argv[])
 {
   std::cout << "Answer: " << largest_grid_product_brute() << std::endl;
 }

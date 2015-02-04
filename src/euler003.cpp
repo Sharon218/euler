@@ -11,14 +11,31 @@
 
 using namespace std;
 
-int largest_prime_factor_brute(uint64_t number)
+uint64_t largest_prime_factor(uint64_t number)
 {
-    return 6857;
+  uint64_t answer = 1;
+  uint64_t point = 3;
+  uint64_t divisor = number;
+
+  while (divisor % 2 == 0) {
+    answer = 2;
+    divisor = divisor/2;
+  }
+
+  while (divisor != 1) {
+      while (divisor % point == 0) {
+        answer = point;
+        divisor = divisor/point;
+      }
+      point += 2;
+  }
+
+  return answer;
 }
 
 #if ! defined UNITTEST_MODE
-int main(int argc, char const *argv[]) {
-  std::cout << "Answer: " << largest_prime_factor_brute << std::endl;
-  return 0;
+int main(int argc, char const *argv[])
+{
+  std::cout << "Answer: " << largest_prime_factor(13195) << std::endl;
 }
 #endif // #if ! defined UNITTEST_MODE

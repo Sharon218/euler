@@ -55,7 +55,7 @@ int special_pyg_opt()
 }
 
 #if ! defined UNITTEST_MODE
-int main( int argc, char* argv[] )
+int main(int argc, char const *argv[])
 {
   std::cout << "Answer: " << special_pyg_brute() << std::endl;
   std::cout << "Answer: " << special_pyg_opt() << std::endl;

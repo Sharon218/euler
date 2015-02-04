@@ -31,7 +31,7 @@ int sum_squares(size_t size)
 }
 
 #if ! defined UNITTEST_MODE
-int main( int argc , char* argv[])
+int main(int argc, char const *argv[])
 {
   std::cout << "Answer: " << sum_squares(100) << std::endl;
 }

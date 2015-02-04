@@ -22,7 +22,7 @@ int nth_prime(size_t nth)
 }
 
 #if ! defined UNITTEST_MODE
-int main( int argc , char* argv[])
+int main(int argc, char const *argv[])
 {
   std::cout << "Answer: " << nth_prime(10001) << std::endl;
 }

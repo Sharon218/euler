@@ -25,7 +25,7 @@ int sum_natural_35(size_t upper)
 }
 
 #if ! defined UNITTEST_MODE
-int main(int argc, char* argv[])
+int main(int argc, char const *argv[])
 {
   std::cout << sum_natural_35(1000) << std::endl;
 }

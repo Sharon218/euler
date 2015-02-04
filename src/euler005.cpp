@@ -27,7 +27,7 @@ int prob005_brute_force(int max)
 }
 
 #if ! defined UNITTEST_MODE
-int main( int argc , char* argv[])
+int main(int argc, char const *argv[])
 {
   std::cout << "Answer: " << prob005_brute_force(20) << std::endl;
 }

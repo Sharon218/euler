@@ -42,7 +42,7 @@ uint64_t prob004_brute_force()
 }
 
 #if ! defined UNITTEST_MODE
-int main( int argc , char* argv[] )
+int main(int argc, char const *argv[])
 {
   cout << prob004_brute_force() << endl;
 }

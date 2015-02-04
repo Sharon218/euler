@@ -1,4 +1,4 @@
-#include "euler004.cpp"  // TODO: Split and inline
+#include "euler004.cpp"
 
 namespace{
   TEST(Prob004,PalindromeGood001){

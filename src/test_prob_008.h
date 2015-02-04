@@ -43,6 +43,6 @@ namespace{
     std::cout << "Opt 001 took: " << a2.count() << std::endl;
 
     if( a2 < a1 )SUCCEED();
-    //FAIL();
+    // FAIL();
   }
 };

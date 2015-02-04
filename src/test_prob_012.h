@@ -1,4 +1,4 @@
-#include "euler011.cpp"
+#include "euler012.cpp"
 
 namespace{
   TEST(Prob011,Answer){

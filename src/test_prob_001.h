@@ -1,4 +1,4 @@
-#include "euler001.cpp"  // TODO: Split and inline
+#include "euler001.cpp"
 
 namespace{
   TEST(Prob001,Know001){

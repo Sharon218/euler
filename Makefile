@@ -17,6 +17,7 @@ BINARIES=$(BIN)/euler001 \
 			$(BIN)/euler009 \
 			$(BIN)/euler010 \
 			$(BIN)/euler011 \
+			$(BIN)/euler012 \
 			$(BIN)/int001 \
 			$(BIN)/loop_test \
 			$(BIN)/scratch \

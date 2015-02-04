@@ -1,4 +1,4 @@
-#include "euler005.cpp"  // TODO: Split and inline
+#include "euler005.cpp"
 
 namespace{
 

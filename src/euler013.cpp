@@ -241,13 +241,26 @@ static const char* numbers[] =
 "53503534226472524250874054075591789781264330331690"
 };
 
+static const char* numbers2[] =
+{
+"11117287533902102798797998220837590246510135740250",
+"11117287533902102798797998220837590246510135740250"
+"11117287533902102798797998220837590246510135740250",
+"11117287533902102798797998220837590246510135740250"
+};
+
+
 uint64_t large_sum()
 {
   uint64_t sum = 0;
 
-  for (size_t i = 0; i < 50; i++) {
-    sum += std::atol(std::string(numbers[i]).substr(0,11).c_str());
-    std::cout << sum << ':' <<  std::string(numbers[i]).substr(0,11) << std::endl;
+  // for (size_t i = 0; i < 50; i++) {
+  //   sum += std::atol(std::string(numbers[i]).substr(0,11).c_str());
+  //   std::cout << sum << ':' <<  std::string(numbers[i]).substr(0,11) << std::endl;
+  // }
+  for (size_t i = 0; i < 3; i++) {
+    sum += std::atol(std::string(numbers2[i]).substr(0,5).c_str());
+    std::cout << sum << ':' <<  std::string(numbers2[i]).substr(0,5) << std::endl;
   }
 
   return sum;

@@ -106,6 +106,8 @@
 // Answer: 5537376230
 
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 #include <cstdint>
 #include <cmath>
 
@@ -243,24 +245,26 @@ static const char* numbers[] =
 
 static const char* numbers2[] =
 {
-"11117287533902102798797998220837590246510135740250",
-"11117287533902102798797998220837590246510135740250"
-"11117287533902102798797998220837590246510135740250",
-"11117287533902102798797998220837590246510135740250"
+  "37107287533902102798797998220837590246510135740250",
+  "46376937677490009712648124896970078050417018260538",
+  "74324986199524741059474233309513058123726617309629",
+  "91942213363574161572522430563301811072406154908250",
 };
 
-
-uint64_t large_sum()
+double to_double( const char* num )
 {
-  uint64_t sum = 0;
+  std::stringstream ss(num);
+  double ret;
+  return ss >> ret ? ret : 0;
+}
 
-  // for (size_t i = 0; i < 50; i++) {
-  //   sum += std::atol(std::string(numbers[i]).substr(0,11).c_str());
-  //   std::cout << sum << ':' <<  std::string(numbers[i]).substr(0,11) << std::endl;
-  // }
-  for (size_t i = 0; i < 3; i++) {
-    sum += std::atol(std::string(numbers2[i]).substr(0,5).c_str());
-    std::cout << sum << ':' <<  std::string(numbers2[i]).substr(0,5) << std::endl;
+
+double large_sum()
+{
+  double sum = 0;
+
+  for (size_t i = 0; i < 50; i++) {
+    sum += to_double( std::string(numbers[i]).substr(38,11).c_str() );
   }
 
   return sum;
@@ -269,6 +273,13 @@ uint64_t large_sum()
 #if ! defined UNITTEST_MODE
 int main(int argc, char const *argv[])
 {
-  std::cout << "Answer: " << large_sum() << std::endl;
+  // std::cout << "Answer: " << std::endl << std::fixed << std::setprecision(10) << large_sum() << std::endl;
+  double sum;
+  double x;
+  std::ifstream fin("euler_13_data.txt");
+  for( std::string line ; getline(fin,line);){
+    
+    sum
+  }
 }
 #endif // #if ! defined UNITTEST_MODE

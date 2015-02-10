@@ -1,4 +1,5 @@
 // https://projecteuler.net/problem=14
+// Longest Collatz sequence
 
 // The following iterative sequence is defined for the set of positive integers:
 //

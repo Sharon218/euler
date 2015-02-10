@@ -136,7 +136,7 @@ std::string large_sum()
 
   for( std::string line ; std::getline(fin,line);){
     // We only care about first 11 (10 + 1) digits
-    // This was we do not need 'Big Int' support
+    // We do not need 'Big Int' support
     sum += too_big<uint64_t>(line.substr(0,11).c_str());
   }
   return std::to_string(sum).substr(0,10);

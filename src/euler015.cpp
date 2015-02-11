@@ -7,6 +7,8 @@
 //
 // How many such routes are there through a 20×20 grid?
 
+// Answer: 137846528820
+
 #include <iostream>
 #include <vector>
 

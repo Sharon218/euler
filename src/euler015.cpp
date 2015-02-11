@@ -8,19 +8,33 @@
 // How many such routes are there through a 20×20 grid?
 
 #include <iostream>
+#include <vector>
 
-int lattice_path_brute(size_t grid_size)
+uint64_t lattice_path(size_t grid_size)
 {
-  if( 2 == grid_size ){
-    return 6;
+  std::vector< uint64_t > grid((grid_size+1)*(grid_size+1),1);
+
+  for (int x = grid_size-1; 0 <= x ; x--) {
+    for (int y = grid_size-1; 0 <= y; y--) {
+      uint64_t count;
+      int pos = (y*(grid_size+1))+x;
+      // if(x == grid_size || y == grid_size){
+      //   count = 1;
+      // }else{
+      //   count = grid.at(pos+1) + grid.at(pos+(grid_size+1));
+      //   //grid[x+1,y] + grid[x,y+1];
+      // }
+      grid.at(pos) = grid.at(pos+1) + grid.at(pos+(grid_size+1));
+    }
   }
-  return 0;
+  return grid.at(0);
 }
 
 #if ! defined UNITTEST_MODE
 int main(int argc, char const *argv[])
 {
-  std::cout << "Answer: " << lattice_path_brute(2) << std::endl;
+  std::cout << "Answer: " << lattice_path(2) << std::endl;
+  std::cout << "Answer: " << lattice_path(20) << std::endl;
   return 0;
 }
 #endif // #if ! defined UNITTEST_MODE

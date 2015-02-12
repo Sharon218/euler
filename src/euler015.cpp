@@ -18,14 +18,7 @@ uint64_t lattice_path(size_t grid_size)
 
   for (int x = grid_size-1; 0 <= x ; x--) {
     for (int y = grid_size-1; 0 <= y; y--) {
-      uint64_t count;
       int pos = (y*(grid_size+1))+x;
-      // if(x == grid_size || y == grid_size){
-      //   count = 1;
-      // }else{
-      //   count = grid.at(pos+1) + grid.at(pos+(grid_size+1));
-      //   //grid[x+1,y] + grid[x,y+1];
-      // }
       grid.at(pos) = grid.at(pos+1) + grid.at(pos+(grid_size+1));
     }
   }

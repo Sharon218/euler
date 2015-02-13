@@ -19,6 +19,8 @@
 
 template <int n> int count_letter()
 {
+  // TODO: We could do deeper: count_letter<int n, int demo> (<,10><,100>etc.)
+  // ..but that might scare some folk and gain...nothing
   int x = 0;
   if( n < 100 ){
     return count_letter<(n/10)*10>() + count_letter<n%10>();

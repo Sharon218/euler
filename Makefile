@@ -4,7 +4,7 @@ BIN=./bin
 SRC=./src
 LLIB=$(SRC)/sieve_eratos.o
 LIB=-lpthread /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a
-CXXFLAGS=-O0 -std=c++11
+CXXFLAGS=-O0 -std=c++11 -ftemplate-depth=1024
 
 BINARIES=$(BIN)/euler001 \
 			$(BIN)/euler002 \
@@ -26,6 +26,8 @@ BINARIES=$(BIN)/euler001 \
 			$(BIN)/unittest
 
 all: $(BINARIES)
+
+
 
 clean:
 	rm -f $(BINARIES)

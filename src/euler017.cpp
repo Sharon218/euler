@@ -13,17 +13,76 @@
 // The use of "and" when writing out numbers is in compliance with
 // British usage.
 
+// Answer: 21124
+
 #include <iostream>
 
-int number_letter_count( int max )
+template <int n> int count_letter()
 {
-  if( 5 == max ) return 19;
-  return 0;
+  int x = 0;
+  if( n < 100 ){
+    return count_letter<(n/10)*10>() + count_letter<n%10>();
+  }
+
+  x = (count_letter<n/100>()+7);//+count_letter<100>());
+  if( 0 != (n%100)){
+    x += 3 + count_letter<n-((n/100)*100)>();
+  }
+  return x;
 }
+
+template <> int count_letter<0>(){return 0;}
+template <> int count_letter<1>(){return 3;}    // one
+template <> int count_letter<2>(){return 3;}    // two
+template <> int count_letter<3>(){return 5;}    // three
+template <> int count_letter<4>(){return 4;}    // four
+template <> int count_letter<5>(){return 4;}    // five
+template <> int count_letter<6>(){return 3;}    // six
+template <> int count_letter<7>(){return 5;}    // seven
+template <> int count_letter<8>(){return 5;}    // eight
+template <> int count_letter<9>(){return 4;}    // nine
+template <> int count_letter<10>(){return 3;}   // ten
+template <> int count_letter<11>(){return 6;}   // eleven
+template <> int count_letter<12>(){return 6;}   // twelve
+template <> int count_letter<13>(){return 8;}   // thirteen
+template <> int count_letter<14>(){return 8;}   // fourteen
+template <> int count_letter<15>(){return 7;}   // fifteen
+template <> int count_letter<16>(){return 7;}   // sixteen
+template <> int count_letter<17>(){return 9;}   // seventeen
+template <> int count_letter<18>(){return 8;}   // eighteen
+template <> int count_letter<19>(){return 8;}   // nineteen
+template <> int count_letter<20>(){return 6;}   // twenty
+template <> int count_letter<30>(){return 6;}   // thirty
+template <> int count_letter<40>(){return 5;}   // forty
+template <> int count_letter<50>(){return 5;}   // fifty
+template <> int count_letter<60>(){return 5;}   // sixty
+template <> int count_letter<70>(){return 7;}   // seventy
+template <> int count_letter<80>(){return 6;}   // eighty
+template <> int count_letter<90>(){return 6;}   // ninety
+template <> int count_letter<100>(){return 10;}  // onehundred
+template <> int count_letter<1000>(){return 11;} // onethousand
+
+static int g_letter_count = 0;
+
+template<int from,int to> struct mp_for
+{
+  void operator()()
+  {
+    g_letter_count += count_letter<from>();
+    mp_for<from+1,to>()();
+  }
+};
+
+// Recursive template stop
+template<int from> struct mp_for<from,from>
+{
+  void operator()(){};
+};
 
 #if ! defined UNITTEST_MODE
 int main(int argc, char const *argv[]) {
-  std::cout << "Answer: " << number_letter_count(5) << std::endl;
+  mp_for<1,1001>()(); // Template recursion stops at <1001,1001>
+  std::cout << "Answer: " << g_letter_count << std::endl;
   return 0;
 }
 #endif // #if ! defined UNITTEST_MODE

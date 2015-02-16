@@ -82,7 +82,8 @@ template<int from> struct mp_for<from,from>
 };
 
 #if ! defined UNITTEST_MODE
-int main(int argc, char const *argv[]) {
+int main(int argc, char const *argv[])
+{
   mp_for<1,1001>()(); // Template recursion stops at <1001,1001>
   std::cout << "Answer: " << g_letter_count << std::endl;
   return 0;

@@ -34,19 +34,54 @@
 // containing one-hundred rows; it cannot be solved by brute force, and requires
 // a clever method! ;o)
 
-#include <iostream>
+// Answer: 1074
 
-int maximum_path_sum_1(size_t lines)
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
+
+static const char* test_data_fname = "./src/euler_18_test_data.txt";
+static const char* data_fname = "./src/euler_18_data.txt";
+
+int maximum_path_sum_1(const char* fname)
 {
-  if( 4 == lines ){
-    return 23;
+  std::ifstream fin(fname);
+
+  if( !fin.is_open()){
+    std::cerr << "Failed to open input file: " << fname << std::endl;
+    return -1;
   }
-  return 0;
+
+  std::vector<std::vector<int> > lines;
+
+  for( std::string line ; std::getline(fin,line);){
+    std::stringstream ss(line);
+    std::string number;
+    std::vector<int> inner;
+
+    while (std::getline(ss,number,',')) {
+      inner.push_back(std::stoi(number));
+    }
+    lines.push_back(inner);
+  }
+
+  for( int i = lines.size()-1; i > 0 ; --i){
+    for( int j = 0 ; j < i; j++){
+      if( lines[i][j] > lines[i][j+1] ){
+        lines[i-1][j] += lines[i][j];
+      }else{
+        lines[i-1][j] += lines[i][j+1];
+      }
+    }
+  }
+
+  return lines[0][0];
 }
 
 #if ! defined UNITTEST_MODE
 int main(int argc, char const *argv[])
 {
-  std::cout << "Answer: " << maximum_path_sum_1() << std::endl;
+  std::cout << "Answer: " << maximum_path_sum_1(data_fname) << std::endl;
 }
 #endif // #if ! defined UNITTEST_MODE

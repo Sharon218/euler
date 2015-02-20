@@ -73,7 +73,6 @@ int factorial_digit_sum_opt(int fme)
   return ret;
 }
 
-
 #if ! defined UNITTEST_MODE
 int main(int argc, char const *argv[])
 {

@@ -26,6 +26,7 @@ BINARIES=$(BIN)/euler001 \
 			$(BIN)/euler018 \
 			$(BIN)/euler019 \
 			$(BIN)/euler020 \
+			$(BIN)/euler021 \
 			$(BIN)/unittest
 
 all: $(BINARIES)

@@ -24,11 +24,10 @@ BINARIES=$(BIN)/euler001 \
 			$(BIN)/euler016 \
 			$(BIN)/euler017 \
 			$(BIN)/euler018 \
+			$(BIN)/bowling \
 			$(BIN)/unittest
 
 all: $(BINARIES)
-
-
 
 clean:
 	rm -f $(BINARIES)

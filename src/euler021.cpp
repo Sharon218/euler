@@ -22,8 +22,9 @@ int amicable_numbers_sum(int max)
   int b = 0;
   int amic_sum = 0;
 
-  for( int i = 1; i < max ;i++){
-    std::cout << "i: " << i << std::endl;
+  for( int i = 1; i <= max ;i++){
+    // std::cout << "i: " << i << std::endl;
+
     a = 0;
     for(int j = 1 ; j < i ; j++){
       if( 0 == (i%j)){
@@ -33,6 +34,7 @@ int amicable_numbers_sum(int max)
 
     b = 0;
     for( int k = 1 ; k < a ; k++ ){
+      // std::cout << "k: " << k << std::endl;
       if( 0 == (a%k)){
         b += k;
       }
@@ -42,9 +44,9 @@ int amicable_numbers_sum(int max)
       amic_sum += i;
     }
 
-    std::cout << "Sum A: " << a << std::endl;
-    std::cout << "Sum B: " << b << std::endl;
-    std::cout << "Amic: " << amic_sum << std::endl;
+    // std::cout << "Sum A: " << a << std::endl;
+    // std::cout << "Sum B: " << b << std::endl;
+    // std::cout << "Amic: " << amic_sum << std::endl;
   }
 
   return amic_sum;
@@ -53,6 +55,6 @@ int amicable_numbers_sum(int max)
 
 #if ! defined UNITTEST_MODE
 int main(int argc, char const *argv[]) {
-  std::cout << "Answer: " << amicable_numbers_sum(220) << std::endl;
+  std::cout << "Answer: " << amicable_numbers_sum(10000) << std::endl;
 }
 #endif //#if ! defined UNITTEST_MODE

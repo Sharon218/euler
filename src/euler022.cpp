@@ -15,15 +15,43 @@
 
 // Answer: 871198282
 
+#include <fstream>
 #include <iostream>
+#include <vector>
+#include <mmap>
 
-int name_scores()
+int alphabet_score(string name)
 {
+  // Avoid ASCII based solution
+  
+
+
+
+}
+
+int name_scores(const char* fname)
+{
+  std::mmap<std::string,int> names;
+
+  std::cout << "Opening: " << fname << std::endl;
+  std::ifstream fin(fname);
+
+  if( !fin.is_open()){
+    std::cerr << "Failed to open file: " << fname << std::endl;
+  }
+  // fin.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+
+  for( std::string line ; std::getline(fin,line);){
+    std::map<std::string>::iterator itr = names.insert( )
+  }
+
+  std::cout << "Names size: " << names.size() << std::endl;
+
   return 0;
 }
 
 #if ! defined UNITTEST_MODE
 int main(int argc, char const *argv[]) {
-  std::cout << "Answer: " << name_scores() << std::endl;
+  std::cout << "Answer: " << name_scores("./src/p022_names.txt") << std::endl;
 }
 #endif //#if ! defined UNITTEST_MODE

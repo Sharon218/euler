@@ -2,6 +2,6 @@
 
 namespace{
   TEST(Prob022,Answer){
-    EXPECT_EQ(871198282,name_scores());
+    EXPECT_EQ(871198282,name_scores("./src/p022_names.txt"));
   }
 };

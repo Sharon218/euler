@@ -15,23 +15,30 @@
 
 // Answer: 871198282
 
+#include <cctype>
 #include <fstream>
 #include <iostream>
-#include <vector>
-#include <mmap>
+#include <map>
+#include <sstream>
 
-int alphabet_score(string name)
+// TODO: template to a non ascii version and optimize
+int alphabet_score(std::string name)
 {
-  // Avoid ASCII based solution
-  
+  int score = 0;
 
+  for( char& c : name ){
+    if( std::isalpha(c)){ // Do not care about quotes
+      score += toupper(c) - 'A'+1;
+    }
+  }
 
-
+  return score;
 }
 
 int name_scores(const char* fname)
 {
-  std::mmap<std::string,int> names;
+  typedef std::map<std::string,int> name_coll;
+  name_coll names;
 
   std::cout << "Opening: " << fname << std::endl;
   std::ifstream fin(fname);
@@ -39,15 +46,33 @@ int name_scores(const char* fname)
   if( !fin.is_open()){
     std::cerr << "Failed to open file: " << fname << std::endl;
   }
-  // fin.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 
   for( std::string line ; std::getline(fin,line);){
-    std::map<std::string>::iterator itr = names.insert( )
+    std::stringstream ss(line);
+    std::string name;
+
+    while (std::getline(ss,name,',')) {
+      int score = alphabet_score(name);
+
+      // std::cout << "Name: " << name << ':' << score << std::endl;
+
+      name_coll::iterator n = names.find(name);
+      if( n != names.end()){
+        n->second += score; // Dupe name, just count again
+      }else{
+        names.insert( name_coll::value_type(name,score));
+      }
+    }
   }
 
-  std::cout << "Names size: " << names.size() << std::endl;
+  int total_score = 0;
+  int pos = 1;
+  for( name_coll::iterator itr = names.begin(); itr != names.end() ; itr++, pos++){
+      // std::cout << "Name: " << pos << ':' << itr->first << ':' << itr->second << std::endl;
+      total_score += (pos*itr->second);
+  }
 
-  return 0;
+  return total_score;
 }
 
 #if ! defined UNITTEST_MODE

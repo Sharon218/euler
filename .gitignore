@@ -27,5 +27,5 @@
 *.out
 *.app
 
-bin/
+cpp/bin/
 .DS_Store

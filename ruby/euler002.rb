@@ -7,6 +7,8 @@
 #
 # By considering the terms in the Fibonacci sequence whose values do not exceed
 # four million, find the sum of the even-valued terms.
+#
+# Answer: 4613732
 def sum_even_fib(upper)
   fib1 = 1
   fib2 = 1
@@ -22,5 +24,4 @@ def sum_even_fib(upper)
   summed
 end
 
-r = sum_even_fib(4000000)
-puts r
+puts sum_even_fib(4_000_000)

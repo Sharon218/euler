@@ -21,8 +21,7 @@ int sum_even_fib(size_t upper)
   long result = 0;
   long summed = 0;
 
-  // TODO: Do we really need to calcuate every fib # in the sequence?
-  while (result < 4000000) {
+  while (result < upper) {
     if ((result % 2) == 0) {
       summed += result;
     }

@@ -16,7 +16,7 @@ def will_divide(test_me)
 end
 
 answer = 20
-while 1
+loop do
   break if will_divide(answer)
   answer += 20
 end

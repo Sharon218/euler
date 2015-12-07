@@ -73,4 +73,23 @@ digits = [
   3, 6, 0, 0, 8, 2, 3, 2, 5, 7, 5, 3, 0, 4, 2, 0, 7, 5, 2, 9, 6, 3, 4, 5, 0
 ]
 
-puts digits.count
+max = 0
+while digits.length > 13
+  n = digits[0] *
+      digits[1] *
+      digits[2] *
+      digits[3] *
+      digits[4] *
+      digits[5] *
+      digits[6] *
+      digits[7] *
+      digits[8] *
+      digits[9] *
+      digits[10] *
+      digits[11] *
+      digits[12]
+  max = n if n > max
+  digits.shift
+end
+
+puts "Answer: #{max}"

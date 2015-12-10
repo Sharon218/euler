@@ -74,7 +74,7 @@ digits = [
 ]
 
 max = 0
-while digits.length > 13
+while digits.length >= 13
   n = digits[0] *
       digits[1] *
       digits[2] *

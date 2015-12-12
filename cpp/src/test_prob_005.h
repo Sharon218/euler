@@ -9,5 +9,4 @@ namespace{
   TEST(Prob005,Answer){
     EXPECT_EQ(232792560,prob005_brute_force(20));
   }
-
 };

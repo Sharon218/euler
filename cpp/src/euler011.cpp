@@ -66,10 +66,10 @@ uint64_t largest_grid_product_brute()
     int r = std::floor(i/20);
     int c = ((i-(r*20))%20);
 
-    uint64_t rl_sum = 0;       // <->
-    uint64_t ud_sum = 0;       // <->
-    uint64_t f_diag_sum = 0;   //  /
-    uint64_t b_diag_sum = 0;       //  \
+    uint64_t rl_sum = 0;
+    uint64_t ud_sum = 0;
+    uint64_t f_diag_sum = 0;
+    uint64_t b_diag_sum = 0;
 
     if( c < 17 ){
       rl_sum = grid[i] *
@@ -81,9 +81,9 @@ uint64_t largest_grid_product_brute()
 
       if( r < 17 ){
         f_diag_sum = grid[i] *
-                      grid[21] *
-                      grid[42] *
-                      grid[63];
+                      grid[i+21] *
+                      grid[i+42] *
+                      grid[i+63];
 
         max = std::max(f_diag_sum,max);
       }

@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 # https://projecteuler.net/problem=6
 # The sum of the squares of the first ten natural numbers is,
 #

@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 #
 # https://projecteuler.net/problem=10
 # Summation of primes

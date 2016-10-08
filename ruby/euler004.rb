@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 # https://projecteuler.net/problem=4
 
 # A palindromic number reads the same both ways.

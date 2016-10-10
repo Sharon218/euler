@@ -22,17 +22,13 @@ end
 
 def prob004_brute_force
   max_pali = 0
-  i = 999
-  until i == 100
-    j = 999
-    until j == 100
+  (100..999).each do |i|
+    (100..999).each do |j|
       t = i * j
       max_pali = t if (t > max_pali) && palindrome_test(t)
-      j -= 1
     end
-    i -= 1
   end
   max_pali
 end
 
-puts prob004_brute_force
+puts prob004_brute_force if __FILE__ == $PROGRAM_NAME

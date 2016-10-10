@@ -24,4 +24,4 @@ def sum_even_fib(upper)
   summed
 end
 
-puts sum_even_fib(4_000_000)
+puts sum_even_fib(4_000_000) if __FILE__ == $PROGRAM_NAME

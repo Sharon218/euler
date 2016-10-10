@@ -19,9 +19,12 @@
 #
 # We can see that 28 is the first triangle number to have over five divisors.
 #
-# What is the value of the first triangle number to have over five hundred divisors?
+# What is the value of the first triangle number to have over five hundred
+# divisors?
 #
 # Answer: 76576500
+
+require 'pry'
 
 # @see http://en.wikipedia.org/wiki/Triangular_number
 def triangle(num)
@@ -49,18 +52,18 @@ def num_divisors(num)
     end
     divisors *= (count + 1)
   end
+  binding.pry
   divisors
 end
 
 def highest_divisible_triangular_number(stop)
+  divisor_count = 0
   i = 1
-
-  while (i <= stop)
+  while (divisor_count <= stop)
     divisor_count = num_divisors(triangle(i))
     i += 1
-    puts "#{i}/#{divisor_count}"
   end
-  triangle(i - 1)
+  i
 end
 
-puts "Answer: #{highest_divisible_triangular_number(500)}"
+puts highest_divisible_triangular_number(10) if __FILE__ == $PROGRAM_NAME

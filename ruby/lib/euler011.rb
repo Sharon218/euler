@@ -101,4 +101,4 @@ def largest_grid_product
   answer
 end
 
-puts "Answer: #{largest_grid_product}"
+puts largest_grid_product if __FILE__ == $PROGRAM_NAME

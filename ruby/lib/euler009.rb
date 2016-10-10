@@ -30,4 +30,4 @@ def pyg(limit)
   end
 end
 
-puts pyg(1000)
+puts pyg(1000) if __FILE__ == $PROGRAM_NAME

@@ -5,8 +5,12 @@
 # Find the sum of all the multiples of 3 or 5 below 1000.
 #
 # Answer: 233168
-sum = 0
-(0..999).each do |num|
-  sum += num if (num % 3 == 0) || (num % 5 == 0)
+def euler001_solution
+  sum = 0
+  (0..999).each do |num|
+    sum += num if (num % 3 == 0) || (num % 5 == 0)
+  end
+  sum
 end
-puts sum
+
+puts euler001_solution if __FILE__ == $PROGRAM_NAME

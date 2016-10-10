@@ -15,10 +15,13 @@ def will_divide(test_me)
   true
 end
 
-answer = 20
-loop do
-  break if will_divide(answer)
-  answer += 20
+def euler005_solution
+  answer = 20
+  loop do
+    break if will_divide(answer)
+    answer += 20
+  end
+  answer
 end
 
-puts "Answer: #{answer}"
+puts euler005_solution if __FILE__ == $PROGRAM_NAME

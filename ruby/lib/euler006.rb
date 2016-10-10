@@ -25,4 +25,4 @@ def sum_squares(limit)
   (square_sum * square_sum) - sum_square
 end
 
-puts "Answer: #{sum_squares(100)}"
+puts sum_squares(100) if __FILE__ == $PROGRAM_NAME

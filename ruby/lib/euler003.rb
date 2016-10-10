@@ -22,4 +22,4 @@ def largest_prime_number(upper)
   answer
 end
 
-puts largest_prime_number(600_851_475_143)
+puts largest_prime_number(600_851_475_143) if __FILE__ == $PROGRAM_NAME

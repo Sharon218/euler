@@ -20,4 +20,4 @@ def sum_primes
   prime_sum
 end
 
-puts "Answer: #{sum_primes}"
+puts sum_primes if __FILE__ == $PROGRAM_NAME

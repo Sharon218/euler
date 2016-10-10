@@ -17,4 +17,4 @@ def find_10001_prime
   answer
 end
 
-puts find_10001_prime
+puts find_10001_prime if __FILE__ == $PROGRAM_NAME

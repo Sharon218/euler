@@ -24,46 +24,18 @@
 #
 # Answer: 76576500
 
-require 'pry'
+require 'core_extensions/integer/divisors'
 
 # @see http://en.wikipedia.org/wiki/Triangular_number
 def triangle(num)
-  return 3 if 1 == num
+  return 3 if num == 1
   ((num + 1) * num) / 2
 end
 
-# Math fact: a prime decomposition n = Prod_i p_i^e_i yields
-# Prod_i (e_i + 1) different divisors
-def num_divisors(num)
-  divisors = 1
-  count = 0
-
-  while (0 == num % 2)
-    count += 1
-    num /= 2
-  end
-  divisors *= (count + 1)
-
-  (3..num).step(2).each do |i|
-    count = 0
-    while (0 == (num % i))
-      count += 1
-      num /= i
-    end
-    divisors *= (count + 1)
-  end
-  binding.pry
-  divisors
-end
-
 def highest_divisible_triangular_number(stop)
-  divisor_count = 0
   i = 1
-  while (divisor_count <= stop)
-    divisor_count = num_divisors(triangle(i))
-    i += 1
-  end
-  i
+  i += 1 while triangle(i).divisor_count < stop
+  triangle(i)
 end
 
-puts highest_divisible_triangular_number(10) if __FILE__ == $PROGRAM_NAME
+puts highest_divisible_triangular_number(500) if __FILE__ == $PROGRAM_NAME

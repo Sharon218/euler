@@ -1,5 +1,9 @@
 # Gemfile
+ruby '2.2.6'
 source 'https://rubygems.org'
 
 gem 'rspec'
+gem 'rubocop', '~> 0.43.0'
 gem 'pry', '~> 0.10.4'
+gem 'guard-rspec', '~> 4.7'
+gem 'guard', '~> 2.13'

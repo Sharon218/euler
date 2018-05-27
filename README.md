@@ -5,6 +5,8 @@ The motivation for starting Project Euler, and its continuation, is to provide a
 
 [Project Euler](https://projecteuler.net/)
 
+See: [Go Euler Solutions](https://github.com/tvarley/go_euler)
+
 ## License
 
 The MIT License (MIT)
